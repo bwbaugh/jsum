@@ -11,13 +11,12 @@ import qualified Data.Text.Lazy.IO as T
 
 main :: IO ()
 main =
-    T.interact $
-    newLine . T.decodeUtf8 . encode . sumObjects . map parse . T.lines
+    T.putStrLn . T.decodeUtf8 . encode . sumObjects . map parse . T.lines
+    =<< T.getContents
   where
     parse x = case eitherDecode' (T.encodeUtf8 x) of
         Right v -> v
         Left e -> error $ "parse failed: " ++ e
-    newLine = T.unlines . (: [])
 
 sumObjects :: [Value] -> Value
 sumObjects = Object . foldl' go HM.empty
