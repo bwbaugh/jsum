@@ -14,7 +14,7 @@ main =
     T.interact $
     newLine . T.decodeUtf8 . encode . sumObjects . map parse . T.lines
   where
-    parse x = case eitherDecode (T.encodeUtf8 x) of
+    parse x = case eitherDecode' (T.encodeUtf8 x) of
         Right v -> v
         Left e -> error $ "parse failed: " ++ e
     newLine = T.unlines . (: [])
