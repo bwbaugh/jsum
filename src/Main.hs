@@ -2,7 +2,6 @@
 module Main where
 
 import Data.List
-import Data.Maybe
 
 import Data.Aeson
 import qualified Data.HashMap.Strict as HM
@@ -15,7 +14,9 @@ main =
     T.interact $
     newLine . T.decodeUtf8 . encode . sumObjects . map parse . T.lines
   where
-    parse = fromMaybe (error "parse failed") . decode . T.encodeUtf8
+    parse x = case eitherDecode (T.encodeUtf8 x) of
+        Right v -> v
+        Left e -> error $ "parse failed: " ++ e
     newLine = T.unlines . (: [])
 
 sumObjects :: [Value] -> Value
