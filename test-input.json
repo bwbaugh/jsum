@@ -2,6 +2,7 @@
 {"foo":2}
 {"bar":4}
 {"bar":8,"foo":16}
+{"qux": null}
 {"qux": {"fizz": 32, "buzz": 64}}
 {"qux": {"fizz": 128, "buzz": 256}}
 {"qux": null}
