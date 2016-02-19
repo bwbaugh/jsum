@@ -13,10 +13,9 @@ main :: IO ()
 main =
     T.putStrLn . T.decodeUtf8 . encode . sumObjects . map parse . T.lines
     =<< T.getContents
-  where
-    parse x = case eitherDecode' (T.encodeUtf8 x) of
-        Right v -> v
-        Left e -> error $ "parse failed: " ++ e
+
+parse :: T.Text -> Value
+parse = either (error . ("parse fail: " ++)) id . eitherDecode' . T.encodeUtf8
 
 sumObjects :: [Value] -> Value
 sumObjects = Object . foldl' go HM.empty
