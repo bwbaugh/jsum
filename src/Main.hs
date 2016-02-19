@@ -24,4 +24,5 @@ sumObjects = Object . foldl' go HM.empty
     go acc (Object o) = HM.unionWith f acc o
     go _ _ = error "expected Object"
     f (Number new) (Number old) = Number (new + old)
-    f _ _ = error "expected Number. nested Objects currently unsupported."
+    f (Object new) (Object old) = Object $ go old (Object new)
+    f _ _ = error "expected Number or Object."
