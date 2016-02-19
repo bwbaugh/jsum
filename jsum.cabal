@@ -1,7 +1,7 @@
 name:                jsum
 version:             0.1.0.0
-synopsis:            Simple project template from stack
-description:         Please see README.md
+synopsis:            Computes the sum total of counts from newline separated JSON objects.
+description:         Please see README.rst
 homepage:            http://github.com/bwbaugh/jsum#readme
 license:             AllRightsReserved
 license-file:        LICENSE
