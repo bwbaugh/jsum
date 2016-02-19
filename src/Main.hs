@@ -22,6 +22,7 @@ sumObjects :: [Value] -> Value
 sumObjects = Object . foldl' go HM.empty
   where
     go acc (Object o) = HM.unionWith f acc o
+    go acc Null = acc
     go _ _ = error "expected Object"
     f (Number new) (Number old) = Number (new + old)
     f (Object new) (Object old) = Object $ go old (Object new)
