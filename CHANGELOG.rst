@@ -16,3 +16,6 @@ Added
 * Minimum viable product (MVP) functionality.
   Supports summing over non-nested JSON objects.
 * Support nested JSON objects.
+* Ignore null values
+  for convenience
+  when using other tools like `jq`.

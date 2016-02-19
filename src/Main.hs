@@ -25,4 +25,5 @@ sumObjects = Object . foldl' go HM.empty
     go _ _ = error "expected Object"
     f (Number new) (Number old) = Number (new + old)
     f (Object new) (Object old) = Object $ go old (Object new)
+    f new Null = new
     f _ _ = error "expected Number or Object."
